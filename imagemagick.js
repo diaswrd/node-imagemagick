@@ -305,12 +305,10 @@ exports.crop = function (options, callback) {
         args.push(arg);
       // found resize flag! ignore the next argument
       if (arg == '-resize'){
-        console.log("resize arg");
         ignoreArg = true;
         printNext = true;
       }
       if (arg === "-crop"){
-        console.log("crop arg");
         printNext = true;
       }
       // found the argument after the resize flag; ignore it and set crop options
