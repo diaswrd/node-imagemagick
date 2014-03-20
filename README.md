@@ -80,7 +80,7 @@ Raw interface to `convert` passing arguments in the array `args`.
 Example:
 
 ```javascript
-im.convert(['kittens.jpg', '-resize', '25x120', 'kittens-small.jpg'], 
+im.convert(['kittens.jpg', '-resize', '25x120', 'kittens-small.jpg'],
 function(err, stdout){
   if (err) throw err;
   console.log('stdout:', stdout);
@@ -151,6 +151,8 @@ im.crop({
   dstPath: 'cropped.jpg',
   width: 800,
   height: 600,
+  offsetX: 100,
+  offsetY: 100,
   quality: 1,
   gravity: "North"
 }, function(err, stdout, stderr){

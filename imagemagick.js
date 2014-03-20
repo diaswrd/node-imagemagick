@@ -280,7 +280,7 @@ exports.crop = function (options, callback) {
     throw new TypeError("No srcPath or data defined");
   if (!options.height && !options.width)
     throw new TypeError("No width or height defined");
-  
+
   if (options.srcPath){
     var args = options.srcPath;
   } else {
@@ -322,7 +322,7 @@ exports.crop = function (options, callback) {
         args = args.concat([
           '-resize', resizeTo,
           '-gravity', dGravity,
-          '-crop', ''+t.opt.width + 'x' + t.opt.height + '+0+0',
+          '-crop', ''+t.opt.width + 'x' + t.opt.height + '+' + t.opt.offsetX + '+' + t.opt.offsetY,
           '+repage'
         ]);
         ignoreArg = false;
