@@ -315,12 +315,18 @@ exports.crop = function (options, callback) {
       if ((arg != "-resize") && ignoreArg) {
         var dSrc      = meta.width / meta.height,
             dDst      = t.opt.width / t.opt.height,
-            resizeTo  = (dSrc < dDst) ? ''+t.opt.width+'x' : 'x'+t.opt.height,
             dGravity  = options.gravity ? options.gravity : "Center";
+
+        if (dSrc < dDst) {
+            var resizeTo = (t.opt.width) + 'x';
+        } else {
+            var resizeTo = 'x' + (t.opt.height);
+        }
+
         args = args.concat([
           '-resize', resizeTo,
           '-gravity', dGravity,
-          '-crop', ''+t.opt.width + 'x' + t.opt.height + '+' + t.opt.offsetX + '+' + t.opt.offsetY,
+          '-crop', ((t.opt.width) + 'x' + (t.opt.height) + '+0+0'),
           '+repage'
         ]);
         ignoreArg = false;
@@ -349,7 +355,7 @@ exports.resizeArgs = function(options) {
     sharpening: 0.2,
     customArgs: [],
     timeout: 0
-  }
+  };
 
   // check options
   if (typeof options !== 'object')
